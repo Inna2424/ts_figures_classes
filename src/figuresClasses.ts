@@ -18,7 +18,9 @@ export class Triangle implements Figure {
     }
 
     if (a >= b + c || b >= a + c || c >= a + b) {
-      throw new Error('invalid triangle sides');
+      throw new Error(
+        'The longest side of a triangle is >= than a sum of two others',
+      );
     }
   }
 
@@ -26,7 +28,7 @@ export class Triangle implements Figure {
     const p = (this.a + this.b + this.c) / 2;
     const area = Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c));
 
-    return Math.round(area * 100) / 100;
+    return Math.floor(area * 100) / 100;
   }
 }
 
@@ -38,7 +40,7 @@ export class Circle implements Figure {
     public radius: number,
   ) {
     if (radius <= 0) {
-      throw new Error('Sides must be positive');
+      throw new Error('Radius must be positive');
     }
   }
 
@@ -65,7 +67,7 @@ export class Rectangle implements Figure {
   getArea(): number {
     const area = this.width * this.height;
 
-    return Math.round(area * 100) / 100;
+    return Math.floor(area * 100) / 100;
   }
 }
 
